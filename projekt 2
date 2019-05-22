@@ -1,0 +1,127 @@
+
+using System;
+using System.Diagnostics;
+using System.Numerics;
+
+namespace projekt2
+{
+    class projekt2
+    {
+        int operations;
+        long PoczatekPomiaruCzasu;
+        double UplynietyCzas;
+        private BigInteger[] numbers =
+        {
+            100913, 1009139, 10091401, 100914061, 1009140611, 10091406133, 100914061337, 1009140613399
+
+        };
+        void CzasWykonaniaPomiaru();
+        {
+        long KoniecPomiaruCzasu = Stopwatch.GetTimestamp();
+        UplynietyCzas = (KoniecPomiaruCzasu- PoczatekPomiaruCzasu) * (1000.0/ Stopwatch.Freguency);
+            }
+
+
+    bool PrzykladowaWersjaAlgorytmu(BigInteger Num)
+    {
+        PoczatekPomiaruCzasu = Stopwatch.GetTimestamp();
+        liczbaOperacji = 0;
+        if (Num < 2)
+        {
+            liczbaOperacji++;
+            CzasWykonaniaPomiaru();
+            return false;
+        }
+        else if (Num < 4)
+        {
+            liczbaOperacji++;
+            CzasWykonaniaPomiaru();
+            return true;
+        }
+        else if (Num % 2 == 0)
+        {
+            liczbaOperacji++;
+            CzasWykonaniaPomiaru();
+            return false;
+        }
+        else
+        {
+            for (BigInteger u = 3; u < Num / 2; u += 2)
+            {
+                liczbaOperacji++;
+                if (Num % u == 0)
+                {
+                    CzasWykonaniaPomiaru();
+                    return false;
+                }
+            }
+
+        }
+        CzasWykonaniaPomiaru();
+        return true;
+    }
+
+    bool PrzyzwoitaWersjaAlgorytmu(BigInteger Num)
+    {
+        PoczatekPomiaruCzasu = Stopwatch.GetTimestamp();
+        liczbaOperacji = 0;
+        if (Num < 2)
+        {
+            liczbaOperacji++;
+            CzasWykonaniaPomiaru();
+            return false;
+        }
+        else if (Num < 4)
+        {
+            liczbaOperacji++;
+            CzasWykonaniaPomiaru();
+            return true;
+        }
+        else if (Num % 2 == 0)
+        {
+            liczbaOperacji;
+            CzasWykonaniaPomiaru();
+            return false;
+        }
+
+
+        long[] x = { 0, 2, 6, 8, 12, 18, 24, 26 };
+        for (long u = 5; u * u <= Num - 30; u += 30)
+        {
+            foreach (long a in x)
+            {
+                if (Num % (u + a) == 0)
+                {
+                    CzasWykonaniaPomiaru();
+                    return false;
+
+                }
+                liczbaOperacji++;
+            }
+        }
+
+        CzasWykonaniaPomiaru();
+        return true;
+    }
+    void Start()
+    {
+        Console.WriteLine("{0,25}{1,25}{2,25}{3,25}", "N", "Wynik", "Operacje", "Czas wykonania");
+        foreach (BigInteger Number in Numbers)
+
+
+        {
+            Console.WriteLine("{0,25}{1,25}{2,25}{3,25}ms", Number,
+                PrzyzwoitaWersjaAlgorytmu(Number) ? "Pierwsza" : "Złożona",
+                liczbaOperacji;
+            UplynietyCzas.ToString("0.000"));
+        }
+    }
+    static void Main(string[] args)
+    {
+        projekt2 P = new projekt2();
+        P.Start();
+        Console.ReadKey();
+    }
+}
+
+}
